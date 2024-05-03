@@ -26,11 +26,11 @@ def get_config():
     # your code here
     for pod in pod_list.items:
         podObject = Pod(pod.metadata.name,pod.status.pod_ip,pod.spec.node_name,pod.metadata.namespace,pod.status.phase)
-        pods.append(podObject)
+        pods.append(podObject.__dict__)
     pod_list = v1.list_namespaced_pod("default")
     for pod in pod_list.items:
         podObject = Pod(pod.metadata.name,pod.status.pod_ip,pod.spec.node_name,pod.metadata.namespace,pod.status.phase)
-        pods.append(podObject)
+        pods.append(podObject.__dict__)
     output = {"pods": pods}
     output = json.dumps(output)
 
