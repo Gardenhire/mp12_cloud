@@ -31,6 +31,10 @@ def get_config():
     for pod in pod_list.items:
         podObject = Pod(pod.metadata.name,pod.status.pod_ip,pod.spec.node_name,pod.metadata.namespace,pod.status.phase)
         pods.append(podObject.__dict__)
+    pod_list = v1.list_namespaced_pod("kube-system")
+    for pod in pod_list.items:
+        podObject = Pod(pod.metadata.name,pod.status.pod_ip,pod.spec.node_name,pod.metadata.namespace,pod.status.phase)
+        pods.append(podObject.__dict__)
     output = {"pods": pods}
     output = json.dumps(output)
 
