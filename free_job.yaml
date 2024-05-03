@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: free-job-
+  namespace: free-service
+spec:
+  template:
+    spec:
+      containers:
+        - name: mp12-free-job
+          image: 975050147900.dkr.ecr.us-east-1.amazonaws.com/mp12:latest
+          resources:
+            limits:
+              cpu: "0.9"
+              memory: "1024Mi"
+            requests:
+              cpu: "0.9"
+              memory: "128Mi"
+          #command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      restartPolicy: Never
+  backoffLimit: 4
