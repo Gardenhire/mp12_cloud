@@ -1,0 +1,32 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCVENDQWUyZ0F3SUJBZ0lJTm1DbmQrVEoweGN3RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TkRBMU1ETXdNRFV3TVRKYUZ3MHpOREExTURFd01EVTFNVEphTUJVeApFekFSQmdOVkJBTVRDbXQxWW1WeWJtVjBaWE13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLCkFvSUJBUURLS28valZxT2ViNC9iRnA2dzdsVkRvRS9pdGYvSUh3aU41UGV5by9kUUo5c09KNWNNV2hoMmZWNjIKN2toNHc3dVhKZ2dlS2N0VEIreitvM21Pa29rb2djVkhEeGdIOVZ1Q3dYZ2o1eTFPZ3o1TUdSbm5WdXdjTWd1MgpDVWRjL250QzdwSTJuQmtkazM4L1IzekJGOUZuYjRGa3pZUW5TZmN0UUdtT1hVdFJHZW5Nc2EvUEhmcHhrejlKClRBQ1VJTXFHWjNBRmtPalZVWnREcmZTUXFnbFVRQzhTQzdNSE1EWEZGblMzWEJ6MGo3Nk9CbmNWdTJzN2JaZTYKTTF0Wlp6Nm9RMXJIaDI5VHZmK0VHc2J4OUtmaWpDa09RN1hiWFFzSFA1NFR0ejZuVExwVVJEZUoyOXg5N0U4ZwpWb0NWS28wbVBFRHNtWUpvd1dUd1JiRVMvTGdiQWdNQkFBR2pXVEJYTUE0R0ExVWREd0VCL3dRRUF3SUNwREFQCkJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXQkJUVnRpaW9VWjkwcnk0VnJmS2xUNWtVcmN2cUx6QVYKQmdOVkhSRUVEakFNZ2dwcmRXSmxjbTVsZEdWek1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQUdFaXgwMjllQwpsRmZ6VGFmWS9iQjF2U3U2TlY1NmlnbzNBcWFvUU40cTM0UnBRQW5sRTJYajk4Ry84ME13SEg0RGI1TUVBM1k3CmdEZTJWQ1dpbWd2a2pzWkd3UlhQY2Uza3JLR1VTK3V4R3ZwNzUySVNSa0hyVkZDbTc1UFJFQ09GMzJES0ZoNG4KREdTWDYycE0xVTY2dTdORytSc1ZOeGNpbGhqSnJhMlpYOW5RMHNsaWlJRUJXQ3N3aDdiMFo1ajNRWDMrWEgxSAplV25teTNkK1FDWG1HU1EyTG4xVUdMck4xdWFlTmR3TFdIWTNXWEFFYXlVR0txcXI5TWxURFBTRGpnWXljbExFCmI1RWJaSUIwSFZacUpSWWYzNDVvMjRmdW5ZVkNNNnRSVU5mNUw0S0lSYmNuNlZGUVJlY1pxK05VZ2FBQWt1RFUKUUlDYVhoSmFjRThDCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+    server: https://EF109BB477D7CBBB9D585B84A5B6F696.gr7.us-east-1.eks.amazonaws.com
+  name: mp12-cluster.us-east-1.eksctl.io
+contexts:
+- context:
+    cluster: mp12-cluster.us-east-1.eksctl.io
+    user: iam-root-account@mp12-cluster.us-east-1.eksctl.io
+  name: iam-root-account@mp12-cluster.us-east-1.eksctl.io
+current-context: iam-root-account@mp12-cluster.us-east-1.eksctl.io
+kind: Config
+preferences: {}
+users:
+- name: iam-root-account@mp12-cluster.us-east-1.eksctl.io
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      args:
+      - token
+      - -i
+      - mp12-cluster
+      command: aws-iam-authenticator
+      env:
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      - name: AWS_DEFAULT_REGION
+        value: us-east-1
+      - name: AWS_PROFILE
+        value: illinois
+      provideClusterInfo: false
