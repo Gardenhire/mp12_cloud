@@ -9,6 +9,11 @@ spec:
       containers:
         - name: mp12-free-job
           image: 975050147900.dkr.ecr.us-east-1.amazonaws.com/mp12:latest
+          env:
+            - name: DATASET
+              value: "mnist"
+            - name: TYPE
+              value: "ff"
           resources:
             limits:
               cpu: "0.9"
